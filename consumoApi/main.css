@@ -1,0 +1,176 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.container-image {
+  width: 80px;
+  height: 80px;
+}
+
+.container-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 3px solid rgb(239, 174, 118);
+}
+
+div.container-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 10px;
+  width: 350px;
+  height: 100px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+h2.container-chat {
+  color: rgb(239, 174, 118);
+}
+
+div.container-chat:hover {
+  background-color: rgb(224, 224, 224);
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.container-user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50%;
+  width: 100%;
+}
+
+.container-chat-info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.container-message {
+  height: 50%;
+  width: 100%;
+}
+
+/* ===== Tarjeta de personaje ===== */
+.container-personaje {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  background: linear-gradient(160deg, #ff9a3c 0%, #ff6a00 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container-personaje:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.3);
+}
+
+.container-personaje > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0 10px;
+}
+
+.container-personaje > div:first-child img {
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  transition: transform 0.3s ease;
+}
+
+.container-personaje:hover > div:first-child img {
+  transform: scale(1.05);
+}
+
+.container-info-personaje {
+  background-color: #1b1b2f;
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 4px solid #ffcf5c;
+}
+
+.container-info-personaje-name {
+  text-align: center;
+}
+
+.container-info-personaje-name h2 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: #ffcf5c;
+}
+
+.container-info-personaje-name p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a0a0c0;
+}
+
+.container-info-personaje-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-info-personaje-stats > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #ff6a00;
+}
+
+.container-info-personaje-stats h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #a0a0c0;
+}
+
+.container-info-personaje-stats p {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+#impresora {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
