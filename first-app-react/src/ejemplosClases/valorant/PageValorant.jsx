@@ -9,6 +9,7 @@ function PageValorant() {
     const response = await axios.get("https://valorant-api.com/v1/agents");
     const charactersApp = response.data.data.map((character) => {
       return {
+        id: character.uuid,
         nombrePersonaje: character.displayName,
         descripcionPersonaje:
           character.description ??

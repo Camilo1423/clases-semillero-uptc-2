@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Task } from "./Task";
 
 export const PageTodoApp = () => {
   const [tarea, setTarea] = useState("");
-  const [listaTareas, setListaTareas] = useState([]);
+  const [listaTareas, setListaTareas] = useState(
+    localStorage.getItem("tareas")
+      ? JSON.parse(localStorage.getItem("tareas")).map((tra) => ({
+          ...tra,
+          fechaCreacion: new Date(tra.fechaCreacion),
+        }))
+      : [],
+  );
 
   const crearTarea = () => {
     const tareaAGuardar = {
@@ -12,8 +20,23 @@ export const PageTodoApp = () => {
       estaCompletada: false,
       fechaCreacion: new Date(),
     };
-    setListaTareas([tareaAGuardar, ...listaTareas]);
+    const tareasAGuardar = [tareaAGuardar, ...listaTareas];
+    localStorage.setItem("tareas", JSON.stringify(tareasAGuardar));
+    setListaTareas(tareasAGuardar);
     setTarea("");
+  };
+
+  const completarTarea = (id) => {
+    const tareaCompletada = listaTareas.find((tra) => tra.id === id);
+    tareaCompletada.estaCompletada = !tareaCompletada.estaCompletada;
+    localStorage.setItem("tareas", JSON.stringify(listaTareas));
+    setListaTareas([...listaTareas]);
+  };
+
+  const eliminarTarea = (id) => {
+    const listaTareasFiltrada = listaTareas.filter((tra) => tra.id !== id);
+    localStorage.setItem("tareas", JSON.stringify(listaTareasFiltrada));
+    setListaTareas(listaTareasFiltrada);
   };
 
   return (
@@ -42,24 +65,12 @@ export const PageTodoApp = () => {
           <p className="text-gray-500">No hay tareas</p>
         )}
         {listaTareas.map((tra) => (
-          <div
+          <Task
             key={tra.id}
-            className="flex flex-col items-center gap-4 w-96 bg-gray-600/50 rounded-md p-4"
-          >
-            <h3>{tra.nombre}</h3>
-            <p>
-              Está completada:{" "}
-              <span className="text-red-500">
-                {tra.estaCompletada ? "Si" : "No"}
-              </span>
-            </p>
-            <p>
-              Fecha de creación:{" "}
-              <span className="text-gray-500">
-                {tra.fechaCreacion.toLocaleDateString()}
-              </span>
-            </p>
-          </div>
+            tarea={tra}
+            completarTarea={completarTarea}
+            eliminarTarea={eliminarTarea}
+          />
         ))}
       </div>
     </div>

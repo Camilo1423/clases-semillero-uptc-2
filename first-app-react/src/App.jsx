@@ -3,19 +3,27 @@ import { PageValorant } from "./ejemplosClases/valorant/PageValorant";
 import { PageTodoApp } from "./ejemplosClases/todoApp/PageTodoApp";
 
 function App() {
-  const [pestanaActiva, setPestanaActiva] = useState("valorant");
+  const [pestanaActiva, setPestanaActiva] = useState(
+    localStorage.getItem("pestanaActiva") || "valorant",
+  );
+
+  const cambioDePestana = (pestana) => {
+    localStorage.setItem("pestanaActiva", pestana);
+    setPestanaActiva(pestana);
+  };
+
   return (
     <>
       <nav className="flex gap-2 border-b border-line px-4 py-3 sm:px-6">
         <button
           className="cursor-pointer rounded-[4px] px-4 py-2 text-sm font-semibold tracking-[0.14em] text-text-muted uppercase transition-colors hover:text-accent"
-          onClick={() => setPestanaActiva("valorant")}
+          onClick={() => cambioDePestana("valorant")}
         >
           Valorant
         </button>
         <button
           className="cursor-pointer rounded-[4px] px-4 py-2 text-sm font-semibold tracking-[0.14em] text-text-muted uppercase transition-colors hover:text-accent"
-          onClick={() => setPestanaActiva("Todo App")}
+          onClick={() => cambioDePestana("Todo App")}
         >
           Todo App
         </button>
